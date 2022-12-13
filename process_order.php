@@ -31,7 +31,7 @@ if (mysqli_connect_errno()) {
 }
 //插入订单
 $sql = "insert into orders (odate,cid,osumprice,oaddress,oreminder,omessage,ostatus,ofinishdate,ophone)
-                      values ('$date','2','$osumprice','$address','0','$message','0','1','$phone');";
+                      values ('$date','$cid','$osumprice','$address','0','$message','0','1','$phone');";
 $result = mysqli_query($conn, $sql);
 //获取插入的订单号
 $o_sql = "select max(oid) from orders;";
