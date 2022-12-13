@@ -1,32 +1,38 @@
 <html>
-<head>
-<meta charset="utf-8">
-<title>Sign in to phone website</title>
-<style>
-	
-	
-	.body{font-family:Arial,Helvetica,sans-serif;font-size:20px;}
-	</style>
-</head>	
-<body>
-<h1>Sign in</h1>
-<div style="   margin: auto;
-width: 50%;
-border: 3px solid green;
-padding: 70px 0;
-  
-  text-align: center;">
-<form action="sign.php" method="post">
-    名称：<input type="text" name="username"><br>
-    性别：<input type="radio" name="sex" value="male" checked>Male<input type="radio" name="sex" value="female">Female<br>
- 	账号:<input type="text" name="account"><br>
- 	密码:<input type="password" name="psw"><br>
- 	确认密码:<input type="password" name="cofpsw"><br>
-    地址:<input type="text" name="ad"><br>
- 	手机号:<input type="text" name="phone"><br>
-    
- <input type="submit" name="submit">
-</form></div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sign in to phone website</title>
+    <style>
+      .body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sign in</h1>
+    <div
+      style="
+        margin: auto;
+        width: 50%;
+        border: 3px solid green;
+        padding: 70px 0;
+        text-align: center;
+      "
+    >
+      <form action="sign.php" method="post">
+        名称：<input type="text" name="username" required /><br />
+        性别：<input type="radio" name="sex" value="male" checked />Male
+        <input type="radio" name="sex" value="female" />Female<br />
+        账号:<input type="text" name="account" required /><br />
+        密码:<input type="password" name="psw" required /><br />
+        确认密码:<input type="password" name="cofpsw" required /><br />
+        地址:<input type="text" name="ad" required /><br />
+        手机号:<input type="number" name="phone" required /><br />
+        <input type="submit" />
+        <br />
+        <a href="login.php">返回登陆页面</a>
+      </form>
+    </div>
+  </body>
 </html>
-
