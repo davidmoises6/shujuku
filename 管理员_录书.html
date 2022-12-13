@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <tittle>管理者_录书</tittle>
+  </head>
+
+  <body>
+    <form class="lushu" action="管理员_录书.php" method="post">
+      <p>
+        ISBN：<input
+          name="bISBN"
+          type="number"
+          size="20"
+          maxlength="11"
+          required="required"
+        />
+      </p>
+      <p>
+        书名：<input
+          name="bname"
+          type="text"
+          size="20"
+          maxlength="11"
+          required="required"
+        />
+      </p>
+      <p>
+        出版日期：<input
+          name="bpubdate"
+          type="number"
+          placeholder="年份"
+          min="0"
+          max="2100"
+          required="required"
+        />
+      </p>
+      <p>
+        页数：<input name="bpage" type="number" min="0" required="required" />
+      </p>
+      <p>
+        价格：<input name="bprice" type="number" min="0" required="required" />
+      </p>
+      <p>
+        摘要：<input
+          name="bsummary"
+          type="text"
+          size="20"
+          maxlength="200"
+          required="required"
+        />
+      </p>
+      <p>
+        库存：<input name="bamount" type="number" min="0" required="required" />
+      </p>
+      <p>
+        语言：<input
+          name="blanguage"
+          type="text"
+          size="20"
+          maxlength="200"
+          required="required"
+        />
+      </p>
+      <p>
+        类型：<input
+          name="btype"
+          type="text"
+          size="20"
+          maxlength="200"
+          required="required"
+        />
+      </p>
+      <!-- 如果多名作者或出版社要加动态输入框 -->
+      <h3>作者信息</h3>
+      <p>
+        名字：<input
+          name="aname"
+          type="text"
+          size="20"
+          maxlength="200"
+          required="required"
+        />
+      </p>
+      <p>
+        性别：<select name="asex">
+          <option value="男">男</option>
+          <option value="女">女</option>
+          <option value="无">无</option>
+        </select>
+      </p>
+      <h3>出版社信息</h3>
+      <p>名字：<input name="pname" type="text" size="20" maxlength="200" /></p>
+      <p>
+        地址：<input name="paddress" type="text" size="20" maxlength="200" />
+      </p>
+      <p>电话：<input name="pphone" type="number" min="0" /></p>
+
+      <a href="">返回</a>
+      <input type="submit" value="确定录书" />
+    </form>
+  </body>
+</html>

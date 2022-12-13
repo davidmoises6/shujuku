@@ -1,0 +1,68 @@
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  align-self: right;
+}
+.table {
+  border-style: solid;
+  border-color: #98bf21;
+  align-self: center;
+  align-items: center;
+  width: "10%";
+}
+.body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+a:link {
+  color: #000000;
+} /* 未访问链接*/
+a:visited {
+  color: #4caf50;
+} /* 已访问链接 */
+a:hover {
+  color: #4caf50;
+} /* 鼠标移动到链接上 */
+a:active {
+  color: #0000ff;
+} /* 鼠标点击时 */
+/* 检索页面——高省薰 */
+.search-box {
+  position: relative;
+  left: 33%;
+  padding: 10px;
+  /* transform: translate(-50%, 0); */
+}
+
+.search-type {
+  height: 35px;
+  width: 70px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.search-txt {
+  height: 30px;
+  width: 200px;
+  border-radius: 15px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+.search-btn {
+  height: 37px;
+  width: 37px;
+  border-radius: 5px;
+}
+.search-btn:hover {
+  background-color: antiquewhite;
+  transition: 0.7s;
+}
