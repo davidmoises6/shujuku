@@ -4,6 +4,7 @@ time();
 //$_SESSION['cid']=1;
 //$_SESSION['phone']=1;
 //$_SESSION['address']=2;//暂时无登录,应该在登录处理进程定义
+$cid=$_SESSION['cid']
 $address = $_GET["address"];
 $phone = $_GET["phone"];
 $message = $_GET["message"];
