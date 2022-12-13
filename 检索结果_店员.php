@@ -12,6 +12,7 @@
     <link href="网购模板.css" rel="stylesheet">
 </head>
 <!-- 检索页面与检索结果html一样 -->
+<!-- 怎么做 -->
 
 <body>
 
