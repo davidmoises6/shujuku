@@ -1,12 +1,12 @@
 <?php
 session_start();
 time();
-//$_SESSION['cid']=1;
 //$_SESSION['phone']=1;
 //$_SESSION['address']=2;//暂时无登录,应该在登录处理进程定义
 $address = $_GET["address"];
 $phone = $_GET["phone"];
 $message = $_GET["message"];
+$cid=$_SESSION['cid'];
 if ($message == "") {
   $message = 0;
 }
@@ -30,8 +30,9 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 //插入订单
+
 $sql = "insert into orders (odate,cid,osumprice,oaddress,oreminder,omessage,ostatus,ofinishdate,ophone)
-                      values ('$date','2','$osumprice','$address','0','$message','0','1','$phone');";
+                      values ('$date','$cid','$osumprice','$address','0','$message','0','1','$phone');";
 $result = mysqli_query($conn, $sql);
 //获取插入的订单号
 $o_sql = "select max(oid) from orders;";
