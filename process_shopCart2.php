@@ -14,4 +14,5 @@ for ($i = 0; $i < count($arr[0]); $i++) {
 }
 
 $_SESSION['shop-cart'] = $arr;
-//header('location:view_shopCart.php');
+header('location:view_shopCart.php');
+?>
