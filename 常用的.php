@@ -12,25 +12,25 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 mysqli_query($conn, 'set names utf8');
 function executeSql($sql)
 {
-	global $conn;
-	$flag = false;
-	$feedback = array();
-	if ($sql == "") {
-		echo "Error! Sql content is empty!";
-	} else {
-		mysqli_query($conn, 'set names utf8');
-		if (mysqli_connect_errno()) {
-			echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		}
+    global $conn;
+    $flag = false;
+    $feedback = array();
+    if ($sql == "") {
+        echo "Error! Sql content is empty!";
+    } else {
+        mysqli_query($conn, 'set names utf8');
+        if (mysqli_connect_errno()) {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
 
-		$query_result = mysqli_query($conn, $sql);
-		if ($query_result) {
-			$flag = true;
-			$feedback = $query_result;
-			$ct = mysqli_num_rows($feedback);
-		}
-		return array($flag, $ct, $feedback);
-	}
+        $query_result = mysqli_query($conn, $sql);
+        if ($query_result) {
+            $flag = true;
+            $feedback = $query_result;
+            $ct = mysqli_num_rows($feedback);
+        }
+        return array($flag, $ct, $feedback);
+    }
 }
 function templete($character)
 {
@@ -59,7 +59,8 @@ function templete($character)
             <div>
                 <a href='订单管理.php'>订单管理</a>
             </div>
-        </div><div id='logout' style='       
+        </div>  
+<div id='logout' style=' 
         position:absolute;
         top:10px;
         right:30px;'>
@@ -67,8 +68,8 @@ function templete($character)
         <a href='login.php'>注销</a>
     </div>
 </div>";
-	} else {
-		print "
+    } else {
+        print "
 <div id='addbook' style=' 
         position:absolute;
         top:10px;
@@ -94,5 +95,5 @@ function templete($character)
         <a href='login.php'>注销</a>
     </div>
 </div>";
-	}
+    }
 }
