@@ -22,7 +22,7 @@ if ($character == "worker") {
   $cname = $_SESSION['cname'];
   echo "<h2>欢迎" . $cname . "进入书店!</h2>";
 }
-$_SESSION['wy']="订单管理.php";
+$_SESSION['wy']="催单列表.php";
 ?>
 
 <body>
@@ -40,8 +40,7 @@ $_SESSION['wy']="订单管理.php";
         <input class='search-txt' type="text" name='search' size='30' required=required placeholder="请输入" />
         <button class='search-btn' type="submit"><i class="fas fa-search"></i></button>
     </form>
-   
-    <a href='催单列表.php?oid=" . $oid . "' style="position:absolute; top:90px; right:700px;">催单列表</a>
+    <a href='订单管理.php?oid=" . $oid . "' style="position:absolute; top:90px; right:700px;">返回</a>
 
     <table border="1" align="center" width='100%'>
         <tr>
@@ -67,14 +66,14 @@ $_SESSION['wy']="订单管理.php";
     if (mysqli_connect_errno()) {
       echo "Failed to connect to MySQL:" . mysqli_connect_error();
     }
-    $sql = "SELECT * FROM orders";
+    $sql = "SELECT * FROM orders where oreminder='1';";
     $result = mysqli_query($conn, $sql);
     //如果数据库里没有数据时？
     if (!$result) {
       die('No Data in orders tables');
     }
     $num_rows = mysqli_num_rows($result);
-    echo '订单的个数：' . $num_rows;
+    echo '催单的个数：' . $num_rows;
 
     while ($row = mysqli_fetch_assoc($result)) {
       $oid = $row['oid'];
