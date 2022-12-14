@@ -57,4 +57,4 @@ $arr = $_SESSION['shop-cart'];
 //插入书与订单连接表
 $_SESSION['shop-cart'] = 0;
 mysqli_close($conn);
-header('location:clearCart.php');
+header('location:clearCart.php');?>
