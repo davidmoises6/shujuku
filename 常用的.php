@@ -39,14 +39,6 @@ function templete($character)
         <div id='addbook' style=' 
                 position:absolute;
                 top:10px;
-                right:280px;'>
-            <div>
-                <a href='检索页面.php'>首页</a>
-            </div>
-        </div>
-        <div id='addbook' style=' 
-                position:absolute;
-                top:10px;
                 right:95px;'>
             <div>
                 <a href='管理顾客.php'>用户管理</a>
