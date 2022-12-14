@@ -5,7 +5,8 @@
 </head>
 <body>
 <?php
-$oid=$_SESSION['newoid'];
+$oid=$_GET['oid'];
+$wy=$_SESSION['wy'];
 $servername = "localhost";
   $username = "root";
   $password = "";
@@ -16,39 +17,20 @@ $servername = "localhost";
   if (mysqli_connect_errno()){
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-  $address=$_GET["address"];
-  $phone=$_GET["phone"];
-  $message=$_GET["message"];
-  $select_sql="select ostatus from orders where oid='$oid'";
-  $status=mysqli_query($conn,$select_sql);
-if($status==0){
-  if( $address!=""){
-    $sql="UPDATE orders
-    SET oaddress='$address'
-    WHERE oid='$oid';";
-  $result=mysqli_query($conn,$sql);
-
-  }
-  if( $phone!=""){
-    $sql="UPDATE orders
-    SET ophone='$phone'
-    WHERE oid='$oid';";
-  $result=mysqli_query($conn,$sql);
-
-  }
-  if( $message!=""){
-    $sql="UPDATE orders
-    SET omessage='$message'
-    WHERE oid='$oid';";
-  $result=mysqli_query($conn,$sql);
-
-  }
-  mysqli_close($conn);
-
- echo "修改成功!";
-}
  
+  $select_sql="select ostatus from orders where oid='$oid'";
+  $row=mysqli_query($conn,$select_sql);
+  $status= mysqli_fetch_assoc($select_result);
+if($status==0){
+  
+    $sql="UPDATE orders
+    SET ostatus='已发货'
+    WHERE oid='$oid';";
+  $result=mysqli_query($conn,$sql);
 ?>
-<a href='orders.php'>返回</a>
+<a align='center' href='<?php echo $_SESSION['wy']; ?>'>返回</a><?php
+}
+
+?>
 </body>
 </html>

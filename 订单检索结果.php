@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 要改 title,form-action,功能 -->
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>检索页面</title>
+    <title>检索结果</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="网购模板.css" rel="stylesheet">
 </head>
-<!-- 检索页面与检索结果html一样 -->
-<?php session_start();
+<?php
+session_start();
 $character = $_SESSION['charactor'];
 if ($character == "worker") {
   $wname = $_SESSION['wname'];
@@ -22,7 +21,6 @@ if ($character == "worker") {
   $cname = $_SESSION['cname'];
   echo "<h2>欢迎" . $cname . "进入书店!</h2>";
 }
-$_SESSION['wy']="订单管理.php";
 ?>
 
 <body>
@@ -40,9 +38,6 @@ $_SESSION['wy']="订单管理.php";
         <input class='search-txt' type="text" name='search' size='30' required=required placeholder="请输入" />
         <button class='search-btn' type="submit"><i class="fas fa-search"></i></button>
     </form>
-   
-    <a href='催单列表.php?oid=" . $oid . "' style="position:absolute; top:90px; right:700px;">催单列表</a>
-
     <table border="1" align="center" width='100%'>
         <tr>
             <th align="center" width="15%">订单号</th>
@@ -57,37 +52,46 @@ $_SESSION['wy']="订单管理.php";
         </tr>
 
         <?php
-    $servername = "localhost";
-    $username = 'root';
-    $password = '';
-    $dbname = 'bshop';
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    mysqli_query($conn, 'set names utf8');
+    $type = $_GET['search_type']; //订单号、订单时间、订单id、顾客id
+    $search = $_GET['search']; //搜索内容}
+
+    $server = 'localhost';
+    $username = 'root';
+    $pw = '';
+    $db = 'bshop';
+
+    $conn = mysqli_connect($server, $username, $pw, $db);
+    mysqli_query($conn, 'set names utf8'); //处理中文乱码
     if (mysqli_connect_errno()) {
       echo "Failed to connect to MySQL:" . mysqli_connect_error();
     }
-    $sql = "SELECT * FROM orders";
-    $result = mysqli_query($conn, $sql);
-    //如果数据库里没有数据时？
-    if (!$result) {
-      die('No Data in orders tables');
+    function query($sql)
+    {
+      global $conn;
+      $result = mysqli_query($conn, $sql);
+      if (!$result) {
+        die("Failed to query '" . $sql . "'");
+      }
+      return $result;
     }
-    $num_rows = mysqli_num_rows($result);
-    echo '订单的个数：' . $num_rows;
 
-    while ($row = mysqli_fetch_assoc($result)) {
-      $oid = $row['oid'];
-      $odate = $row['odate'];
-      $cid=$row['cid'];
-      $oaddress = $row['oaddress'];
-      $ophone = $row['ophone'];
-      $omessage = $row['omessage'];
-      $ostatus = $row['ostatus'];
-      $oreminder = $row['oreminder'];
-      $anamearr = array();
-      $ct = 0;
-      echo "<tr>";
+    function template($result)
+    { //$result是
+      global $character;
+      while ($row = mysqli_fetch_assoc($result)) {
+        $oid = $row['oid'];
+        $odate = $row['odate'];
+        $cid=$row['cid'];
+        $oaddress = $row['oaddress'];
+        $ophone = $row['ophone'];
+        $omessage = $row['omessage'];
+        $ostatus = $row['ostatus'];
+        $oreminder = $row['oreminder'];
+        $anamearr = array();
+        $ct = 0;
+        
+        echo "<tr>";
      
       echo "<td align='center'>" . $oid . "</td>";
       echo "<td align='center'>" . $odate . "</td>";
@@ -104,12 +108,30 @@ $_SESSION['wy']="订单管理.php";
         echo "<br>";
         echo "<a href='发货.php?oid=" . $oid . "'>发货</a>";
         
-      echo "</td>";
-      echo "</tr>";
+        echo "</td>";
+        echo "</tr>";
+      }
+    }
+
+
+    echo '‘' . $type . '’为‘' . $search . '’的搜索结果'; //字大一点，加粗
+    if ($type == 'oid') {
+      $sql = "SELECT * FROM orders WHERE oid like '%" . $search . "%';";
+      template(query($sql));
+    } else if ($type == 'status') {
+      // 找aid
+      $sql = "SELECT * FROM orders WHERE ostatus like '%" . $search . "%';";
+      template(query($sql));
+      }
+    else if ($type == 'date') {
+      $sql = "SELECT * FROM orders WHERE odate like '" . $search . "%';";
+      template(query($sql));
+    } 
+    else if ($type == 'cid') {
+        $sql = "SELECT * FROM orders WHERE cid like '" . $search . "%';";
+        template(query($sql));
+      }else {
+      die("TYPE ERROR!");
     }
     mysqli_close($conn);
     ?>
-    </table>
-</body>
-
-</html>
