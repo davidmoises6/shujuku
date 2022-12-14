@@ -19,9 +19,6 @@ $servername = "localhost";
   $address=$_GET["address"];
   $phone=$_GET["phone"];
   $message=$_GET["message"];
-  $select_sql="select ostatus from orders where oid='$oid'";
-  $status=mysqli_query($conn,$select_sql);
-if($status==0){
   if( $address!=""){
     $sql="UPDATE orders
     SET oaddress='$address'
@@ -44,9 +41,8 @@ if($status==0){
 
   }
   mysqli_close($conn);
-
+  
  echo "修改成功!";
-}
  
 ?>
 <a href='orders.php'>返回</a>
