@@ -34,12 +34,12 @@
 	if ($selected_Charactor == "admin") {
 		$wsql = "SELECT wid,wname FROM worker WHERE wname ='$userName' and wpassword='$pwd' ;";
 		$wquery_result = mysqli_query($conn, $wsql);
-		$arow =mysqli_fetch_assoc($wquery_result);
+		$arow = $wquery_result;
 
 		if (empty($arow) != "ture") {
 			$_SESSION['charactor'] = 'worker';
-			$_SESSION['wid'] = $arow["wid"];
-			$_SESSION['wname'] = $arow["wname"];
+			$_SESSION['wid'] = $row["wid"];
+			$_SESSION['wname'] = $row["wname"];
 			header('Location:检索页面.php');
 		} else {
 			echo "Error! Something wrong in your username or password!";
