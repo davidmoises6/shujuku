@@ -4,11 +4,7 @@ time();
 //$_SESSION['cid']=1;
 //$_SESSION['phone']=1;
 //$_SESSION['address']=2;//暂时无登录,应该在登录处理进程定义
-<<<<<<< HEAD
 $cid = $_SESSION['cid'];
-=======
-$cid=$_SESSION['cid']
->>>>>>> 35affa8a65680fd157940751f1b5e3f52578b462
 $address = $_GET["address"];
 $phone = $_GET["phone"];
 $message = $_GET["message"];
@@ -61,4 +57,4 @@ $arr = $_SESSION['shop-cart'];
 //插入书与订单连接表
 $_SESSION['shop-cart'] = 0;
 mysqli_close($conn);
-header('location:clearCart.php');?>
+header('location:clearCart.php');
