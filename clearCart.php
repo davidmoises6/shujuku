@@ -45,4 +45,4 @@ $_SESSION['cid'] = $u_id;
 $_SESSION['phone'] = $phone;
 $_SESSION['address'] = $address;
 $_SESSION['cname'] = $cname;
-header("location:view_shopCart.php");
+header("location:view_shopCart.php");?>

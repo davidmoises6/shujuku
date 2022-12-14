@@ -22,7 +22,7 @@ for ($i = 0; $i < count($arr[0]); $i++) {
       $amount = implode("-", $row);
       if ($arr[1][$i] + 1 <= $amount) {
          $arr[1][$i] = $arr[1][$i] + 1;
-         echo  "成功增加!";
+         echo  "成功增加!";?><a href='view_shopCart.php'>返回</a><?php
       } else {
          echo "库存不足！";
       }
@@ -34,6 +34,6 @@ $_SESSION['shop-cart'] = $arr;
 
 <head></head>
 
-<body><a href='view_shopCart.php'>返回</a></body>
+<body></body>
 
 </html>
