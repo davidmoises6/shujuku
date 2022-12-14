@@ -35,7 +35,23 @@ function executeSql($sql)
 function templete($character)
 {
 	if ($character == 'worker') {
-		print "<div id='logout' style='       
+		print "
+        <div id='addbook' style=' 
+                position:absolute;
+                top:10px;
+                right:95px;'>
+            <div>
+                <a href='管理顾客.php'>用户管理</a>
+            </div>
+        </div>
+        <div id='addbook' style='        
+                position:absolute;
+                top:10px;
+                right:180px;'>
+            <div>
+                <a href='订单管理.php'>订单管理</a>
+            </div>
+        </div><div id='logout' style='       
         position:absolute;
         top:10px;
         right:30px;'>
